@@ -18,8 +18,7 @@ export default function LoginPage() {
             ACCOUNT
           </div>
           <div className="text-[#fceadb] sm:text-base md:text-lg text-sm px-2 xl:text-2xl">
-            Create an account in order to use our exclusive messenging app. Then
-            enjoy seamless connectivity with your loved ones.
+            Voli rati samma jasari ni sakkau hai kta haru yeti. Html css matrai use garne ho js xaina yesma yeti sakkaunai parxa natra project vyaindaina. Download garya code bujdaina tanab hunxa.
           </div>
         </div>
         <div className=" bg-[#fceadb] rounded  mt-7  w-full ">
