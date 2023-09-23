@@ -1,10 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
-import mongooseConnect from './utils/dbconnect'
-
 const rubik = Rubik({ subsets: ['latin'] })
-mongooseConnect()
 
 export const metadata: Metadata = {
   title: 'Chat App',
