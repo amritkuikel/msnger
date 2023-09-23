@@ -1,6 +1,13 @@
 import Image from "next/image";
 import img from "../../public/bg5.png";
+import axios from "axios";
+// const user= {
+//   name:'asdf',
+//   email:'sdaf',
+//   password:'fsdfds'
+// }
 export default function LoginPage() {
+  // axios.post('/auth/register',user)
   return (
     <>
       <div className="w-screen h-screen relative">
@@ -18,7 +25,8 @@ export default function LoginPage() {
             ACCOUNT
           </div>
           <div className="text-[#fceadb] sm:text-base md:text-lg text-sm px-2 xl:text-2xl">
-            Voli rati samma jasari ni sakkau hai kta haru yeti. Html css matrai use garne ho js xaina yesma yeti sakkaunai parxa natra project vyaindaina. Download garya code bujdaina tanab hunxa.
+            Create an account in order to use our exclusive messenging app. Then
+            enjoy seamless connectivity with your loved ones.
           </div>
         </div>
         <div className=" bg-[#fceadb] rounded  mt-7  w-full ">
@@ -45,7 +53,7 @@ export default function LoginPage() {
               className="px-2 lg:mb-6 bg-[#fceadb] border-2 border-red-300 rounded h-9 w-full mb-2 "
             />
             <div className="flex mb-3">
-              <input type="checkbox" className="lg:mb-3"/>
+              <input type="checkbox" className="lg:mb-3" />
               <div className="ml-2 lg:mb-3 text-slate-600/70 text-sm md:text-lg xl:text-2xl">
                 i concent to receiving emails from this site
               </div>
