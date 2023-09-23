@@ -14,12 +14,12 @@ export default function LoginPage() {
         <Image src={img} alt="bg pic" fill={true} />
       </div>
       <div className="absolute top-0  w-screen items-center h-screen flex flex-col justify-around px-4 pb-4 md:px-16 lg:flex-row">
-        <div className="flex-column  text-center">
-          <div>
+        <div className="flex-column  text-center lg:text-left">
+          <div className="lg:flex  items-center">
             <div className="text-[#fceadb] sm:text-5xl xl:text-7xl md:text-6xl text-5xl 2xl:text-8xl pt-10 font-bold tracking-tight">
               CREATE
             </div>
-            <div className=" text-[#fceadb] italic xl:text-4xl">an</div>
+            <div className=" text-[#fceadb] italic xl:text-4xl lg:pt-10 lg:pl-6">an</div>
           </div>
           <div className="text-[#fceadb] sm:text-5xl text-5xl xl:text-7xl md:text-6xl mb-5 font-bold tracking-tight lg:mb-8 2xl:text-8xl">
             ACCOUNT
