@@ -3,6 +3,8 @@ import User from "@/models/usermodel";
 import mongooseConnect from "@/app/utils/dbconnect";
 import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
+const gmailUser = process.env.GMAIL_USER;
+const gmailPassword = process.env.GMAIL_PASSWORD;
 
 export async function POST(request) {
   try {
@@ -15,20 +17,19 @@ export async function POST(request) {
         status: 200,
       });
     }
-    bcrypt.hash(password, 10, async function (err, hash) {
-      password = hash;
-    });
-    const user = await User.create({ name, email, password });
     const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(toString(user._id), salt);
-    const hash2 = hash.replaceAll("/", "");
-    await User.findOneAndUpdate({ email }, { token: hash2 });
+    const hash = await bcrypt.hash(password, salt);
+    const user = await User.create({ name, email, password:hash });
+    const salt2 = await bcrypt.genSalt(10);
+    const hash2 = await bcrypt.hash(toString(user._id), salt2);
+    const hashNoSlash = hash.replaceAll("/", "");
+    await User.findOneAndUpdate({ email }, { token: hashNoSlash });
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "amritkuikel5689@gmail.com",
-        pass: "jsfbbvmbzctnrysw",
+        user: gmailUser,
+        pass: gmailPassword,
       },
     });
     async function main() {
@@ -40,7 +41,7 @@ export async function POST(request) {
         html: `<a href='/mailverify?a=${hash2}'>CLICK ME</a>`,
       });
     }
-    main().catch(console.error);
+    await main().catch(console.error);
     return NextResponse.json({
       message: "user registered succesfully plz verify mail",
       status: 200,
