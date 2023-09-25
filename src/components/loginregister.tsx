@@ -17,7 +17,6 @@ export default function LoginRegisterPage({ a, b, c, d, e, f, g, h, i }: any) {
       password: payload.password,
     };
     try {
-      console.log(payload);
       const { data } = await axios.post("/api/auth/register", value);
       alert(JSON.stringify(data));
     } catch (e) {

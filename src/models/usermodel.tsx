@@ -17,6 +17,9 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    token: {
+      type: String,
+    },
     isVerified: {
       type: Boolean,
       default: false,
@@ -27,5 +30,5 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-const User =mongoose.models.user || mongoose.model("user", userSchema);
+const User = mongoose.models.user || mongoose.model("user", userSchema);
 export default User;
