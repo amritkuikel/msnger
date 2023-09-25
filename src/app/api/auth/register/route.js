@@ -37,7 +37,7 @@ export async function POST(request) {
         to: email,
         subject: "VERIFICATION MAIL",
         text: "plz click the link below to be verified user and use our services.",
-        html: `<a href='http://localhost:3000/mailverify?a=${hash2}'>CLICK ME</a>`,
+        html: `<a href='/mailverify?a=${hash2}'>CLICK ME</a>`,
       });
     }
     main().catch(console.error);
