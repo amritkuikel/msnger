@@ -38,7 +38,7 @@ export async function POST(request) {
         to: email,
         subject: "VERIFICATION MAIL",
         text: "plz click the link below to be verified user and use our services.",
-        html: `<a href='http://localhost:3000/mailverify?a=${hashNoSlash}'>CLICK ME</a>`,
+        html: `<a href='https://attendies-eight.vercel.app/mailverify?a=${hashNoSlash}'>CLICK ME</a>`,
       });
     }
     await main().catch(console.error);
