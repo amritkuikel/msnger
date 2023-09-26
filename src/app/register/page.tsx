@@ -8,7 +8,7 @@ export default function Register() {
       d={
         "Create an account in order to use our exclusive messenging app. Then enjoy seamless connectivity with your loved ones."
       }
-      e={"block"}
+      e={true}
       f={"CREATE ACCOUNT"}
       g={"ALREADY HAVE AN ACCOUNT?"}
       h={"LOG IN"}

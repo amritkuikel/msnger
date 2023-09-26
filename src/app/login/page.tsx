@@ -8,7 +8,7 @@ export default function Login() {
       d={
         "Login to your account in order to use our exclusive messenging app. Then enjoy seamless connectivity with your loved ones."
       }
-      e={"hidden"}
+      e={false}
       f={"LOG IN"}
       g={"DO NOT HAVE AN ACCOUNT?"}
       h={"SIGN UP"}

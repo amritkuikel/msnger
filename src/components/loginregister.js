@@ -1,27 +1,42 @@
 "use client";
 import Image from "next/image";
 import img from "../../public/bg5.png";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-export default function LoginRegisterPage({ a, b, c, d, e, f, g, h, i }: any) {
+import { useRouter } from "next/navigation";
+export default function LoginRegisterPage({ a, b, c, d, e, f, g, h, i }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const submitHandler = async (payload: any) => {
-    const value = {
-      name: payload.name,
-      email: payload.email,
-      password: payload.password,
-    };
-    try {
-      const { data } = await axios.post("/api/auth/register", value);
-      alert(JSON.stringify(data));
-    } catch (e) {
-      const error = e as AxiosError;
-      alert(error.message);
+  const router = useRouter();
+  const submitHandler = async (payload) => {
+    if (a === "CREATE") {
+      const value = {
+        name: payload.name,
+        email: payload.email,
+        password: payload.password,
+      };
+      try {
+        const { data } = await axios.post("/api/auth/register", value);
+        alert(JSON.stringify(data));
+      } catch (e) {
+        console.log(e);
+      }
+    } else if (a === "LOGIN") {
+      const data = {
+        email: payload.email,
+        password: payload.password,
+      };
+      try {
+        const value = await axios.post("/api/auth/login", data);
+        alert(JSON.stringify(value.data.message));
+        router.push("/");
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
   return (
@@ -62,20 +77,23 @@ export default function LoginRegisterPage({ a, b, c, d, e, f, g, h, i }: any) {
               placeholder={errors.email && "Please enter your email"}
               className="px-2 lg:mb-6 bg-[#fceadb] border-2  border-red-300 rounded h-9 w-full mb-2"
             />
-
-            <div
-              className={`text-base lg:mb-2 font-bold xl:text-xl text-black/60 sm:text-lg mb-1 md:text-xl ${e}`}
-            >
-              FULL NAME
-            </div>
-            <input
-              {...register("name", {
-                required: true,
-              })}
-              placeholder={errors.name && "Please enter your name"}
-              type="text"
-              className={`px-2 lg:mb-6 bg-[#fceadb] border-2 border-red-300 rounded h-9 w-full mb-2 ${e}`}
-            />
+            {e && (
+              <>
+                <div
+                  className={`text-base lg:mb-2 font-bold xl:text-xl text-black/60 sm:text-lg mb-1 md:text-xl `}
+                >
+                  FULL NAME
+                </div>
+                <input
+                  {...register("name", {
+                    required: true,
+                  })}
+                  placeholder={errors.name && "Please enter your name"}
+                  type="text"
+                  className={`px-2 lg:mb-6 bg-[#fceadb] border-2 border-red-300 rounded h-9 w-full mb-2 ${e}`}
+                />
+              </>
+            )}
 
             <div className="text-base lg:mb-2 font-bold xl:text-xl sm:text-lg text-black/60 mb-1 md:text-xl">
               PASSWORD

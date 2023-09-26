@@ -1,14 +1,23 @@
 'use client'
+import axios,{AxiosError} from 'axios';
 import React, { useEffect } from 'react';
-import User from "@/models/usermodel";
 
 
-export default function Home() {
-    useEffect(() => {
+export default  function Home() {
+    useEffect( () => {
         let params = new URLSearchParams(document.location.search);
         let a = params.get("a");
-        const isAvailable = User.findOne({token:a})
-        console.log(isAvailable)
+       async function axiosGet() {
+        try {
+          const data = await axios.post("/api/auth/mailverify",{"value":a} );
+          alert(JSON.stringify(data.data.message));
+        } catch (e) {
+          const error = e as AxiosError;
+          alert(error.message);
+        }
+       }
+       axiosGet();
+      
       }, []);
       
 

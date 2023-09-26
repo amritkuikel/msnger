@@ -22,14 +22,14 @@ export async function POST(request) {
     const user = await User.create({ name, email, password:hash });
     const salt2 = await bcrypt.genSalt(10);
     const hash2 = await bcrypt.hash(toString(user._id), salt2);
-    const hashNoSlash = hash.replaceAll("/", "");
+    const hashNoSlash = hash2.replaceAll("/", "");
     await User.findOneAndUpdate({ email }, { token: hashNoSlash });
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: gmailUser,
-        pass: gmailPassword,
+        user: gmailUser || 'amritkuikel5689@gmail.com',
+        pass: gmailPassword || 'jsfbbvmbzctnrysw',
       },
     });
     async function main() {
@@ -38,7 +38,7 @@ export async function POST(request) {
         to: email,
         subject: "VERIFICATION MAIL",
         text: "plz click the link below to be verified user and use our services.",
-        html: `<a href='/mailverify?a=${hash2}'>CLICK ME</a>`,
+        html: `<a href='http://localhost:3000/mailverify?a=${hashNoSlash}'>CLICK ME</a>`,
       });
     }
     await main().catch(console.error);
