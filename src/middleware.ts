@@ -5,12 +5,12 @@ export default function middleware(req: NextRequest) {
   let url = req.url;
   if (verify && url.includes("/login")) {
     return NextResponse.redirect(
-      "http://localhost:3000/" || "https://attendies-eight.vercel.app/"
+      "http://localhost:3000/" || "https://attendies-eight.vercel.app"
     );
   }
   if (
     !verify &&
-    url === ("http://localhost:3000/" || "https://attendies-eight.vercel.app/")
+    url === ("http://localhost:3000/" || "https://attendies-eight.vercel.app")
   ) {
     return NextResponse.redirect(
       "http://localhost:3000/login" ||
@@ -19,7 +19,7 @@ export default function middleware(req: NextRequest) {
   }
   if (verify && url.includes("/register")) {
     return NextResponse.redirect(
-      "http://localhost:3000/" || "https://attendies-eight.vercel.app/"
+      "http://localhost:3000/" || "https://attendies-eight.vercel.app"
     );
   }
 }
