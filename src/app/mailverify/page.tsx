@@ -1,11 +1,9 @@
 'use client'
 import axios,{AxiosError} from 'axios';
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 
 
 export default  function Home() {
-  const router = useRouter()
     useEffect( () => {
         let params = new URLSearchParams(document.location.search);
         let a = params.get("a");
@@ -13,7 +11,7 @@ export default  function Home() {
         try {
           const data = await axios.post("/api/auth/mailverify",{"value":a} );
           alert(JSON.stringify(data.data.message));
-          router.push('/login')
+          window.close()
 
         } catch (e) {
           const error = e as AxiosError;
@@ -22,7 +20,7 @@ export default  function Home() {
        }
        axiosGet();
       
-      }, [router]);
+      }, []);
       
 
   return (
