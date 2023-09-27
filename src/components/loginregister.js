@@ -22,6 +22,7 @@ export default function LoginRegisterPage({ a, b, c, d, e, f, g, h, i }) {
       try {
         const { data } = await axios.post("/api/auth/register", value);
         alert(JSON.stringify(data));
+        router.push("/login");
       } catch (e) {
         console.log(e);
       }
@@ -33,7 +34,7 @@ export default function LoginRegisterPage({ a, b, c, d, e, f, g, h, i }) {
       try {
         const value = await axios.post("/api/auth/login", data);
         alert(JSON.stringify(value.data.message));
-        router.push("/");
+        router.push("/dashboard");
       } catch (e) {
         console.log(e);
       }
