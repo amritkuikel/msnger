@@ -26,7 +26,9 @@ export async function POST(request) {
       );
       cookies().set({
         name:'token',
-        value:jwtToken
+        value:jwtToken,
+        secure:true,
+        path:'/'
       })
       return NextResponse.json({ message: "login successful"});
     }
