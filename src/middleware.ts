@@ -4,11 +4,11 @@ export default function middleware(req: NextRequest) {
   let verify = req.cookies.get("token");
   let url = req.url;
   console.log(Boolean(verify))
-  console.log(Boolean(!verify))
+  console.log(url)
   if (verify && url.includes("/login")) {
     return NextResponse.redirect("https://attendies-eight.vercel.app");
   }
-  if ((!verify) && url.startsWith("https://attendies-eight.vercel.app" )) {
+  if (!verify && url.includes("/dashboard" )) {
     return NextResponse.redirect("https://attendies-eight.vercel.app/login");
   }
   if (verify && url.includes("/register")) {
